@@ -59,7 +59,4 @@ The feature enables users to preview product images quickly without leaving the 
 4. **Save & Refresh**
    - Click **Save** and refresh the page to activate the feature.
 
----
-
-## 📁 File Structure
 
