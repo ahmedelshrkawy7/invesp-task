@@ -1,0 +1,127 @@
+function generateUSPBanner(env, language) {
+  // Fetch data using XHR
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Parse the JSON response
+        var data = JSON.parse(xhr.responseText);
+        // Use the data to dynamically update the banner content
+        var updatedBannerContainer = updateBannerContent(data[language]);
+
+        document.getElementById("usp-temp-banner").appendChild(updatedBannerContainer);
+      } else {
+        console.error("Failed to fetch data for the USP banner.");
+      }
+    }
+  };
+
+  // Banner content based on the banner type: default / custom
+  // Modify the bannerType only if you want to revert to the default banner or if you change the default one with a custom one
+  var bannerType = 'custom'; // 'default' or 'custom'
+  var jsonVariant = bannerType === 'default' ? 'revert-default-usp-banner-data.json' : 'usp-banner-data.json';
+
+  // Banner versioning
+  // Always modify the version upon updating the banners to avoid caching issues
+  var versionNumber = '10172025';
+
+  var fetchLink =
+    env === "prod"
+      ? `https://pamono.com/usp-banner/${jsonVariant}?v=${versionNumber}`
+      : `https://com.staging.itemique.com/usp-banner/${jsonVariant}?v=${versionNumber}`;
+  xhr.open("GET", fetchLink, true);
+  xhr.send();
+}
+
+function updateBannerContent(data) {
+  // Create and set up the banner container
+  var bannerContainer = document.createElement("div");
+  bannerContainer.className = "temp-banner-container";
+
+  // Create and set up the primary banner gift
+  var primaryBannerGift = document.createElement("div");
+  primaryBannerGift.className = "temp-banner-gift";
+  primaryBannerGift.style.backgroundColor = data.primaryBanner.backgroundColor;
+
+  // Create and set up the primary anchor
+  if (data.primaryBanner.link) {
+    var primaryAnchor = document.createElement("a");
+    primaryAnchor.style.textDecoration = "underline";
+
+    if (data.primaryBanner.isLinkBolded) {
+      primaryAnchor.style.fontWeight = "bold";
+    }
+    
+    primaryAnchor.textContent = data.primaryBanner.textContent;
+    primaryAnchor.href = data.primaryBanner.link;
+
+    // Append the primary anchor to the primary banner gift
+    primaryBannerGift.appendChild(primaryAnchor);
+  } else {
+    var primaryAnchor = document.createElement("span");
+    primaryAnchor.textContent = data.primaryBanner.textContent;
+    primaryBannerGift.appendChild(primaryAnchor);
+  }
+
+  // Add the country flag according to region (optional)
+  if (data.primaryBanner.countrySelector && data.primaryBanner.shouldShowCountryFlag === true) {
+    var countryFlag = document.createElement("span");
+    countryFlag.className = `iti__flag ${data.primaryBanner.countrySelector}`
+    countryFlag.style.display = "inline-block";
+
+    // adding spaces before and after the country flag
+    primaryBannerGift.innerHTML += '&nbsp;';
+    primaryBannerGift.appendChild(countryFlag);
+    primaryBannerGift.innerHTML += '&nbsp;';
+  }
+
+  if (data.primaryBanner.additionalTextContent) {
+    var additionalPrimaryAnchorText = document.createElement("span")
+    additionalPrimaryAnchorText.textContent = data.primaryBanner.additionalTextContent
+    primaryBannerGift.appendChild(additionalPrimaryAnchorText);
+  }
+
+  // Append the primary banner gift to the banner container
+  bannerContainer.appendChild(primaryBannerGift);
+
+  // Repeat the above logic for secondary banner content
+  if (data.secondaryBanner) {
+    // Create and set up the secondary banner gift
+    var secondaryBannerGift = document.createElement("div");
+    secondaryBannerGift.className = "temp-banner-gift display-none";
+    secondaryBannerGift.style.backgroundColor =
+      data.secondaryBanner.backgroundColor;
+
+    if (data.secondaryBanner.link) {
+      // Create and set up the secondary anchor
+      var secondaryAnchor = document.createElement("a");
+      secondaryAnchor.style.textDecoration = "underline";
+
+      if (data.secondaryBanner.isLinkBolded) {
+        secondaryAnchor.style.fontWeight = "bold";
+      }
+      
+      secondaryAnchor.textContent = data.secondaryBanner.textContent;
+      secondaryAnchor.href = data.secondaryBanner.link;
+
+      // Append the secondary anchor to the secondary banner gift
+      secondaryBannerGift.appendChild(secondaryAnchor);
+    } else {
+      var secondaryAnchor = document.createElement("span");
+      secondaryAnchor.textContent = data.secondaryBanner.textContent;
+      secondaryBannerGift.appendChild(secondaryAnchor);
+    }
+
+    if (data.secondaryBanner.additionalTextContent) {
+      var additionalSecondaryAnchorText = document.createElement("span")
+      additionalSecondaryAnchorText.textContent = data.secondaryBanner.additionalTextContent
+      secondaryBannerGift.appendChild(additionalSecondaryAnchorText);
+    }
+
+    // Append the secondary banner gift to the banner container
+    bannerContainer.appendChild(secondaryBannerGift);
+  }
+
+  // Return the banner container
+  return bannerContainer;
+}

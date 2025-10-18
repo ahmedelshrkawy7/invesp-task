@@ -1,0 +1,261 @@
+/* Quick View Styles */
+:root {
+  --theme-color: #0088cc;
+}
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+.link-wrapper {
+  position: relative;
+}
+
+.quick-view-btn {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -110%);
+  background: var(--theme-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+  font-family: inherit;
+  width: 100%;
+  height: 48px;
+}
+
+.link-wrapper:hover .quick-view-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+.link-wrapper:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.quick-view-btn:hover {
+  background: var(--theme-color);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Quick View Modal */
+.quick-view-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.quick-view-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.quick-view-content {
+  background: white;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 800px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.quick-view-modal.active .quick-view-content {
+  transform: scale(1);
+}
+
+.quick-view-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s ease;
+  font-family: inherit;
+}
+
+.quick-view-close:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.quick-view-gallery {
+  height: 500px;
+  position: relative;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.swiper-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000;
+  background: rgba(255, 255, 255, 0.8);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.swiper-pagination-bullet {
+  background: #000;
+  opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.quick-view-info {
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.quick-view-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #333;
+  font-family: inherit;
+}
+
+.quick-view-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  font-family: inherit;
+}
+
+/* Loading state */
+.quick-view-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  font-size: 18px;
+  color: #666;
+  font-family: inherit;
+}
+
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #333;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quick-view-content {
+    width: 95vw;
+    max-height: 85vh;
+  }
+
+  .quick-view-gallery {
+    height: 300px;
+  }
+
+  .quick-view-info {
+    padding: 15px;
+  }
+
+  .quick-view-title {
+    font-size: 16px;
+  }
+
+  .quick-view-price {
+    font-size: 18px;
+  }
+
+  .quick-view-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}
+
+/* Ensure proper stacking with existing site elements */
+.quick-view-modal {
+  z-index: 99999;
+}
+
+.quick-view-btn {
+  z-index: 10;
+}
+
+.product-card:hover::before {
+  z-index: 5;
+}

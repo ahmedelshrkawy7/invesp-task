@@ -1,0 +1,241 @@
+#old-vp .StripeElement,
+.StripeElement {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ebebeb;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+    width: 100%;
+}
+
+#old-vp .stripe-card-with-icon,
+.stripe-card-with-icon {
+    border-left-width: 0px;
+}
+
+#old-vp .stripe-card-brands,
+.stripe-card-brands {
+    background: white;
+    border: 1px solid #ebebeb;
+    border-right-width: 0px;
+}
+
+#old-vp .stripe-card-brand,
+.stripe-card-brand {
+    margin: 15px 10px 10px;
+    height: 19px;
+    width: 29px;
+    display: block;
+}
+
+#old-vp .stripe-security-icon,
+.stripe-security-icon {
+    background: white;
+    border: 1px solid #ebebeb;
+    border-right-width: 0px;
+}
+
+#old-vp .security-icon,
+.security-icon {
+    margin: 15px 10px 10px;
+    width: 30px;
+    height: 20px;
+    content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDQ0IDMyIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNEREQiIGQ9Ik00NCAyOGMwIDIuMi0xLjggNC00IDRINGMtMi4yIDAtNC0xLjgtNC00VjRjMC0yLjIgMS44LTQgNC00aDM2YzIuMiAwIDQgMS44IDQgNHYyNHoiLz48cGF0aCBmaWxsPSIjNDA0MDQwIiBkPSJNMCA2aDQ0djhIMHoiLz48cGF0aCBmaWxsPSIjNjY2IiBkPSJNMzMgMjBoNnYzaC02eiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0yIDE4aDMwdjZIMnoiLz48cGF0aCBmaWxsPSIjQ0QxRjIwIiBkPSJNMzUgMThjMy4zIDAgNiAxLjYgNiAzLjUgMCAyLTIuNyAzLjUtNiAzLjVzLTYtMS42LTYtMy41YzAtMiAyLjctMy41IDYtMy41em0wLTFjLTQgMC03IDItNyA0LjVzMyA0LjUgNyA0LjUgNy0yIDctNC41LTMtNC41LTctNC41eiIvPjwvZz48L3N2Zz4=)
+}
+
+#old-vp .StripeElement--webkit-autofill,
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
+
+#old-vp .StripeWrapper,
+.StripeWrapper {
+    background-color: #f7f8f9;
+    padding: 15px;
+}
+
+#old-vp .stripe-flex-overlay,
+.stripe-flex-overlay {
+    display: block;
+    position: fixed;
+    z-index: 9000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(31, 31, 31, .8);
+}
+
+#old-vp  #stripe-payment-request-button,
+#stripe-payment-request-button {
+    width: 8em;
+    margin: auto;
+}
+
+#old-vp .stripe-flex-content,
+.stripe-flex-content {
+    position: absolute;
+    top: -5%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    min-height: 450px;
+    border: 0px;
+    border-radius: 10px;
+    min-width: 320px;
+}
+
+#old-vp .stripe-flex-noscroll,
+.stripe-flex-noscroll {
+    overflow: hidden;
+}
+
+#old-vp .stripe-loader,
+.stripe-loader {
+    margin: auto;
+    border: 16px solid #f7f8f9;
+    border-top: 16px solid #cfd7df;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+#old-vp .stripe-errors svg,
+.stripe-errors svg {
+    vertical-align: middle;
+}
+
+#old-vp .StripeElement--invalid,
+.StripeElement--invalid{
+    border-color: #ff6400;
+}
+
+#old-vp .stripe-errors svg .base ,
+.stripe-errors svg .base {
+    fill: #fa755a;
+}
+
+#old-vp .stripe-errors svg .glyph,
+.stripe-errors svg .glyph {
+    fill: #fff;
+}
+
+#old-vp .control-group,
+.control-group {
+    margin-bottom: 10px !important;
+}
+
+#old-vp .stripe-card-number-wrapper,
+.stripe-card-number-wrapper {
+    display: flex;
+}
+
+#old-vp .control-label,
+.control-label {
+    position: absolute;
+    top: -5px;
+    left: 7px;
+    padding: 0 3px;
+    font-size: 11px;
+    background-color: #ffffff;
+    color: #999999;
+}
+
+#old-vp .StripeElement--focus,
+.StripeElement--focus{
+    border-color: #444;
+}
+
+#old-vp input[type=text]:focus ~ .control-label,
+#old-vp .StripeElement--focus ~ .control-label,
+input[type=text]:focus ~ .control-label,
+.StripeElement--focus ~ .control-label{
+    color: #444;
+}
+
+#old-vp .StripeElement--invalid ~ .control-label,
+.StripeElement--invalid ~ .control-label{
+    color: #ff5000;
+}
+
+#old-vp .StripeElement--empty ~ .control-label,
+#old-vp input:placeholder-shown ~ .control-label,
+.StripeElement--empty ~ .control-label,
+input:placeholder-shown ~ .control-label{
+    display: none;
+}
+
+/*card expiration's & card number's labels are important and should always show*/
+#old-vp .stripe-card-expiry.StripeElement--empty ~ .control-label,
+#old-vp .stripe-card-number.StripeElement--empty ~ .control-label,
+#old-vp input:not(:placeholder-shown) ~ .control-label,
+.stripe-card-expiry.StripeElement--empty ~ .control-label,
+.stripe-card-number.StripeElement--empty ~ .control-label,
+input:not(:placeholder-shown) ~ .control-label{
+    display: block;
+}
+
+#old-vp #payment_form_fields_stripecw_directdebits .input-box,
+#payment_form_fields_stripecw_directdebits .input-box{
+    border: none
+}
+
+#old-vp #payment_form_fields_stripecw_directdebits .control-group:last-of-type label,
+#payment_form_fields_stripecw_directdebits .control-group:last-of-type label{
+    display: none;
+}
+
+#old-vp #aw-onestepcheckout-container .input-box ~ .validation-advice,
+#aw-onestepcheckout-container .input-box ~ .validation-advice{
+    margin-top: -8px;
+    padding-bottom: 5px;
+}
+
+#old-vp #payment_form_stripecw_creditcard .input-box.html-field,
+#payment_form_stripecw_creditcard .input-box.html-field{
+    border: none
+}
+
+#old-vp .input-box.html-field,
+.input-box.html-field{
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    clear: both;
+    position: relative;
+}
+
+#old-vp .visible,
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 300ms linear;
+}
+
+#old-vp .hidden,
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
+#old-vp .display-none {
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#old-vp label[for="p_method_stripecw_directdebits"],
+label[for="p_method_stripecw_directdebits"] {
+    margin-top: 10px
+}
